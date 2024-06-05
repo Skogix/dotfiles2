@@ -1,10 +1,9 @@
 #!/usr/bin/env sh
 
 set -o errexit -o nounset
-
 ins="pacman -S --noconfirm --needed"
-pkgs_aur=""
-
+pkgs_aur="lazygit discord-ptb gitflow-avh"
+pkgs="base-devel neovim"
 build() {
   PKG_URL="https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz"
   PKG_NAME="${PKG_URL##*/}" # e.g yay.tar.gz
@@ -21,18 +20,21 @@ build() {
 }
 
 install_skogix_deps() {
-  pkgs="xclip base-devel git wget openssh unzip neovim"
+  pkgs="$pkgs xclip base-devel git wget openssh unzip neovim"
 }
 install_skogix() {
-  pkgs="$pkgs zsh github-cli"
+  while IFS= read -r pkg; do
+    pkgs="$pkgs $pkg"
+  done < "skogix.pkgs"
 }
 
 # köra yay istället?
-# install_extra_deps() {
-#   for pkg in $pkgs_aur ; do
-#     build "$pkg"
-#   done
-# }
+install_extra_deps() {
+  # echo $pkgs_aur
+  for extraPkg in $pkgs_aur; do
+    echo y | LANG=C yay --answerdiff None --answerclean None --mflags "--noconfirm" $extraPkg
+  done
+}
 
 usage() {
   printf "\nUsage:\n"
@@ -59,13 +61,14 @@ while [ "$#" -gt 0 ] ; do
 done
 
 main() {
-  "$DEPS" && install_deps
+  "$DEPS" && install_skogix_deps
   "$SKOGIX" && install_skogix
+  "$EXTRA" && install_extra_deps
 
   sudo pacman -Syy
   sudo $ins $pkgs
 
-  "$EXTRA" && install_extra_deps
+  # "$EXTRA" && install_extra_deps
 
   exit 0
 }
