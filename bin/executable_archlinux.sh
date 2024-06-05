@@ -19,6 +19,13 @@ build() {
   )
 }
 
+install_oh_my_zsh(){
+  pkgs="$pkgs zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+}
+
 install_skogix_deps() {
   pkgs="$pkgs xclip base-devel git wget openssh unzip neovim"
 }
@@ -41,12 +48,14 @@ usage() {
   echo " --deps         Install dependencies"
   echo " --skogix       Install skogix"
   echo " --extra        Install extra"
+  echo " --oh-my-zsh    Install oh-my-zsh"
 }
 
 ## CLI options
 DEPS=false
 EXTRA=false
 SKOGIX=false
+OHMYZSH=false
 
 if [ "$#" -eq 0 ] ; then usage ; exit 1 ; fi
 
@@ -55,6 +64,7 @@ while [ "$#" -gt 0 ] ; do
     --deps) DEPS=true ;;
     --extra) EXTRA=true ;;
     --skogix) SKOGIX=true ;;
+    --oh-my-zsh) OHMYZSH=true ;;
     *) usage; exit 1 ;;
   esac
   shift
@@ -68,7 +78,7 @@ main() {
   sudo pacman -Syy
   sudo $ins $pkgs
 
-  # "$EXTRA" && install_extra_deps
+  "$OHMYZSH" && install_oh_my_zsh
 
   exit 0
 }
