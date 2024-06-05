@@ -1,0 +1,4 @@
+dot_config/zsh/oh-my-zsh/cache
+dot_config/zsh/oh-my-zsh/custom/example.zsh
+dot_config/zsh/oh-my-zsh/custom/themes/example.zsh-theme
+dot_config/zsh/oh-my-zsh/custom/plugins/example/example.plugin.zsh
