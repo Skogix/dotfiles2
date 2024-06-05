@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
 set -o errexit -o nounset
-# trash-cli
 ins="pacman -S --noconfirm --needed"
 pkgs_aur="lazygit discord-ptb gitflow-avh"
 pkgs="base-devel neovim"
@@ -33,9 +32,7 @@ install_skogix() {
 install_extra_deps() {
   # echo $pkgs_aur
   for extraPkg in $pkgs_aur; do
-    # echo $extraPkg
     echo y | LANG=C yay --answerdiff None --answerclean None --mflags "--noconfirm" $extraPkg
-    # yay -S --sudoloop --noconfirm $extraPkg
   done
 }
 
