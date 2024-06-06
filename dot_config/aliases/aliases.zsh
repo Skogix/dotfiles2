@@ -6,3 +6,5 @@ alias install="cd ~/bin;nvim ~/bin/skogix.pkgs;sh /home/skogix/bin/archlinux.sh 
 alias lazychezmoi="chezmoi cd;lazygit"
 alias edit="chezmoi edit; chezmoi apply"
 # test
+alias ljud="systemctl --user restart wireplumber pipewire pipewire-pulse"
+alias dockerpurge="docker system prune -a --volumes"

@@ -107,6 +107,7 @@ return {
           { name = 'path' },
           { name = 'orgmode' },
           { name = 'vimwiki-tags' },
+          { name = 'neorg' },
         },
       }
     end,

@@ -12,6 +12,7 @@ return {
   opts = {
     load = {
       ['core.defaults'] = {}, -- Loads default behaviour
+      ['core.export'] = {}, -- Loads default behaviour
       ['core.concealer'] = {}, -- Adds pretty icons to your documents
       ['core.keybinds'] = {}, -- Adds default keybindings
       ['core.completion'] = {
@@ -19,6 +20,7 @@ return {
           engine = 'nvim-cmp',
         },
       }, -- Enables support for completion plugins
+      ['core.integrations.nvim-cmp'] = {},
       ['core.journal'] = {}, -- Enables support for the journal module
       ['core.dirman'] = { -- Manages Neorg workspaces
         config = {

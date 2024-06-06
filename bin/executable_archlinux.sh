@@ -2,7 +2,7 @@
 
 set -o errexit -o nounset
 ins="pacman -S --noconfirm --needed"
-pkgs_aur="lazygit discord-ptb gitflow-avh"
+pkgs_aur="lazygit discord-ptb gitflow-avh docker-compose lazydocker"
 pkgs="base-devel neovim"
 build() {
   PKG_URL="https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz"
