@@ -22,3 +22,12 @@ tailscale
 nethogs
 htop
 ctop
+cockpit 
+cockpit-pcp 
+cockpit-storaged 
+cockpit-packagekit 
+cockpit-podman 
+cockpit-machines 
+sssd 
+sscg
+libvirt

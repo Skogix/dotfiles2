@@ -8,3 +8,8 @@ alias edit="chezmoi edit; chezmoi apply"
 # test
 alias ljud="systemctl --user restart wireplumber pipewire pipewire-pulse"
 alias dockerpurge="docker system prune -a --volumes"
+alias dlog="docker compose -f /home/skogix/srv/docker-compose.yaml logs"
+alias dtail="docker compose -f /home/skogix/srv/docker-compose.yaml logs -tf --tail="50" crowdsec"
+alias dup="docker compose -f /home/skogix/srv/docker-compose.yaml up -d"
+alias dprune="docker system prune -a --volumes"
+alias dtop="oxker"
